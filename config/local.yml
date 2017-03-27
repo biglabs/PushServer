@@ -1,0 +1,40 @@
+redis:
+  url: redis://192.168.99.100:32777/
+
+authentication:
+  servers:
+    -
+      name: lavalamp #replace with yours
+      password: 123456 #replace with yours
+gcm:
+  xmpp: false
+  apiKey: AIzaSyDKQdxr0yln-k0Jrr3fsKCXAwY8YK1lCu4 #AIza---------------- #dd
+  senderId: 173749095187 #projectnumber of your project in google developer #dd
+  redphoneApiKey: 1475835329594 # the values after the name and - of your project id eg : for yourappname-desd4f333 it is def333 #dd
+
+
+apn:
+  feedback: false
+  pushKey: /path/to/your/apnpushcertificates/apns-dev-key-noenc.pem #replace with yours
+  voipKey: /path/to/your/apnpushcertificates/apns-dev-key-noenc.pem #replace with yours
+  voipCertificate: /path/to/your/apnpushcertificates/apns-dev-cert.pem #replace with yours
+  pushCertificate: /path/to/your/apnpushcertificates/apns-dev-cert.pem #replace with yours
+
+server:
+    applicationConnectors:
+    - type: http
+      port: 9090
+    adminConnectors:
+    - type: http
+      port: 9091
+    gzip:
+        enabled: true
+
+logging:
+  level: INFO
+  appenders:
+    - type: file
+      currentLogFilename: pushserver.log
+      archivedLogFilenamePattern: pushserver-%d.log.gz
+      archivedFileCount: 5
+    - type: console

@@ -27,6 +27,10 @@ public class PushController {
     this.gcmSender = gcmSender;
   }
 
+  public PushController(GCMSender gcmSender) {
+    this(null, gcmSender);
+  }
+
   @Timed
   @PUT
   @Consumes(MediaType.APPLICATION_JSON)
@@ -42,6 +46,7 @@ public class PushController {
   public void sendApnPush(@Auth Server server, @Valid ApnMessage apnMessage)
       throws TransientPushFailureException
   {
+    if(apnSender != null)
     apnSender.sendMessage(apnMessage);
   }
 
